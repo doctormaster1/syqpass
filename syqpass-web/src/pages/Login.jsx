@@ -58,7 +58,7 @@ function Login() {
                   <div className="relative">
                     <input
                       type="password"
-                      placeholder="7+ Characters, 1 Capital letter"
+                      placeholder="8+ Characters, 1 Upper case, 1 lower case, 1 number"
                       className="w-full rounded-lg border border-stroke bg-transparent py-4 pl-6 pr-10 outline-none focus:border-primary focus-visible:shadow-none dark:border-form-strokedark dark:bg-form-input dark:focus:border-primary"
                     />
 
