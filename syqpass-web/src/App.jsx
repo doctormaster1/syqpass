@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import Devices from "./pages/Device";
+// import Devices from "./pages/Device";
 import Profile from "./pages/Profile";
-import Settings from "./pages/Settings";
+// import Settings from "./pages/Settings";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -29,9 +29,9 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/device" element={<Devices />} />
+          {/* <Route path="/device" element={<Devices />} /> */}
           <Route path="/profile" element={<Profile />} />
-          <Route path="/setting" element={<Settings />} />
+          {/* <Route path="/setting" element={<Settings />} /> */}
         </Routes>
       </>
     )
