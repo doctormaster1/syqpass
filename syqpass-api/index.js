@@ -1,14 +1,42 @@
 const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
+const connectDB = require("./database/mongo");
+
+const unknownEndpoint = require("./middlewares/unknownEndpoint");
+const errorHandler = require("./middlewares/errorHandler");
+
+const AuthRoute = require("./routers/AuthRoute");
 
 const app = express();
 
-app.use(express.json());
+connectDB();
+
+app.use(
+  express.json({
+    strict: false,
+  })
+);
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(helmet.noSniff());
+app.use(helmet.xssFilter());
+app.use(helmet.hidePoweredBy());
+app.use(helmet.dnsPrefetchControl());
+
+app.use("/api", AuthRoute);
 
 app.get("/", (req, res) => {
   res.sendStatus(200);
   console.log("Api is Running");
 });
 
-app.listen(3000, () => {
+app.use(unknownEndpoint);
+app.use(errorHandler);
+
+app.listen(4000, () => {
   console.log("Api Server is Running");
 });

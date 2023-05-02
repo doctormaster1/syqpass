@@ -1,0 +1,11 @@
+{
+  "database": {
+    "mongo": "mongodb://localhost:5000/syqpass"
+  },
+  "jwt": {
+    "secret": "vardibile",
+    "secretKey": "doctormaster",
+    "exp": "60",
+    "refExp": "6000"
+  }
+}
