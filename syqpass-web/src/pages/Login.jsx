@@ -1,7 +1,6 @@
 import React from "react";
 import LoginLayout from "../layout/LoginLayout";
 import Logo from "../assets/images/logo/logo.png";
-import LogoDark from "../assets/images/logo/logo-dark.png";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -13,15 +12,15 @@ function Login() {
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <Link className="mb-5.5 inline-block" to="/">
                 <img className="hidden dark:block" src={Logo} alt="Logo" />
-                <img className="dark:hidden" src={LogoDark} alt="Logo" />
+                <img className="dark:hidden" src={Logo} alt="Logo" />
               </Link>
-              <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
+              <h2 className="mb-9 text-2xl font-bold text-black sm:text-title-xl2">
                 Login to SyQPass
               </h2>
 
               <form>
                 <div className="mb-4">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                  <label className="mb-2.5 block font-medium text-black">
                     Email
                   </label>
                   <div className="relative">
@@ -52,7 +51,7 @@ function Login() {
                 </div>
 
                 <div className="mb-6">
-                  <label className="mb-2.5 block font-medium text-black dark:text-white">
+                  <label className="mb-2.5 block font-medium text-black">
                     Password
                   </label>
                   <div className="relative">
