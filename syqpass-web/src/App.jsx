@@ -7,6 +7,8 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 // import Settings from "./pages/Settings";
 
+import Passwords from "./pages/Password";
+
 const App = () => {
   const [loading, setLoading] = useState(true);
 
@@ -32,6 +34,7 @@ const App = () => {
           {/* <Route path="/device" element={<Devices />} /> */}
           <Route path="/profile" element={<Profile />} />
           {/* <Route path="/setting" element={<Settings />} /> */}
+          <Route path="/passwords" element={<Passwords />} />
         </Routes>
       </>
     )

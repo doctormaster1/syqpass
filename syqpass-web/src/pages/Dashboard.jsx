@@ -15,12 +15,6 @@ const Dashboard = () => {
         <CardThree />
         <CardFour />
       </div>
-      <br />
-      <div className="flex flex-col gap-10">
-        <div className="col-span-12 xl:col-span-8">
-          <TableThree />
-        </div>
-      </div>
     </DefaultLayout>
   );
 };
