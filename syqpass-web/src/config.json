@@ -1,0 +1,8 @@
+{
+  "api": {
+    "url": "http://localhost:4000",
+    "header": {
+      "Content-Type": "application/json"
+    }
+  }
+}
