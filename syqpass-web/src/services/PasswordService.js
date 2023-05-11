@@ -1,23 +1,23 @@
 import apiService from "../http";
 
 const getAll = () => {
-  return http.get("/passwords");
+  return apiService.get("/passwords");
 };
 
 const get = (id) => {
-  return http.get(`/password/${id}`);
+  return apiService.get(`/password/${id}`);
 };
 
 const create = (data) => {
-  return http.post("/password", data);
+  return apiService.post("/password", data);
 };
 
 const update = (id, data) => {
-  return http.put(`/password/${id}`, data);
+  return apiService.put(`/password/${id}`, data);
 };
 
 const remove = (id) => {
-  return http.delete(`/password/${id}`);
+  return apiService.delete(`/password/${id}`);
 };
 
 const PasswordService = { getAll, get, create, update, remove };
