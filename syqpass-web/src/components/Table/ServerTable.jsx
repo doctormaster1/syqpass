@@ -22,13 +22,13 @@ const TableThree = () => {
           <thead>
             <tr className="bg-gray-2 text-left dark:bg-meta-4">
               <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-11">
-                Title and Ip
+                Title
               </th>
               <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
-                Username
+                Ip and FQDN
               </th>
               <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                Type
+                Username
               </th>
               <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
                 Password
@@ -41,16 +41,16 @@ const TableThree = () => {
           <tbody>
             <tr>
               <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
-                <h5 className="font-medium text-black dark:text-white">Esxi</h5>
-                <p className="text-sm">192.168.1.2</p>
+                <p className="text-black dark:text-white">Esxi</p>
+              </td>
+              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                <h5 className="font-medium text-black dark:text-white">
+                  192.168.1.2
+                </h5>
+                <a href={`https://`+ "esxi.syqpass.local"} target="_blank"><p className="text-sm">esxi.syqpass.local</p></a>
               </td>
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                 <p className="text-black dark:text-white">root</p>
-              </td>
-              <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                <p className="inline-flex rounded-full bg-success bg-opacity-10 py-1 px-3 text-sm font-medium text-success">
-                  Server
-                </p>
               </td>
               <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                 <p>{isHidden.btn1 ? "Password1!" : "********"}</p>
