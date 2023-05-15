@@ -6,9 +6,6 @@ import { retrievePassword } from "../../slices/PasswordSlice";
 const TableThree = () => {
   const [isHidden, setIsHidden] = useState(false);
 
-  // const [currentPassword, setCurrentPassword] = useState(null);
-  // const [currentIndex, setCurrentIndex] = useState(-1);
-
   const passwords = useSelector((state) => state.passwords);
   const dispatch = useDispatch();
 
@@ -53,6 +50,7 @@ const TableThree = () => {
                 Actions
               </th>
             </tr>
+            {console.log(passwords)}
           </thead>
           <tbody>
             {passwords &&

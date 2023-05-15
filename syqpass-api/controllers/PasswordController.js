@@ -16,4 +16,10 @@ const getPassword = asyncHandler(async (req, res, next) => {
   res.status(200).send({ status: "success", data: password });
 });
 
-module.exports = { createPassword };
+const getPasswords = asyncHandler(async (req, res, next) => {
+  const passwords = await Password.find();
+  if (!passwords) throw NotFound(res);
+  res.status(200).send({ status: "succuss", data: passwords });
+});
+
+module.exports = { createPassword, getPasswords };

@@ -31,33 +31,34 @@ export const retrievePassword = createAsyncThunk(
   "password/retrieve",
   async () => {
     const res = await Service.getAll();
-    return res.data;
+    return res.data.data;
   }
 );
 
 const passwordSlice = createSlice({
   name: "password",
   initialState,
-  extraReducers: {
-    [createPassword.fulfilled]: (state, action) => {
-      state.push(action.payload);
-    },
-    [retrievePassword.fulfilled]: (state, action) => {
-      return [...action.payload];
-    },
-    [updatePassword.fulfilled]: (state, action) => {
-      const index = state.findIndex(
-        (tutorial) => tutorial.id === action.payload.id
-      );
-      state[index] = {
-        ...state[index],
-        ...action.payload,
-      };
-    },
-    [deletePassword.fulfilled]: (state, action) => {
-      let index = state.findIndex(({ id }) => id === action.payload.id);
-      state.splice(index, 1);
-    },
+  extraReducers: (builder) => {
+    builder
+      .addCase(createPassword.fulfilled, (state, action) => {
+        state.push(action.payload);
+      })
+      .addCase(retrievePassword.fulfilled, (state, action) => {
+        return action.payload;
+      })
+      .addCase(updatePassword.fulfilled, (state, action) => {
+        const index = state.findIndex(
+          (tutorial) => tutorial.id === action.payload.id
+        );
+        state[index] = {
+          ...state[index],
+          ...action.payload,
+        };
+      })
+      .addCase(deletePassword.fulfilled, (state, action) => {
+        const index = state.findIndex(({ id }) => id === action.payload.id);
+        state.splice(index, 1);
+      });
   },
 });
 

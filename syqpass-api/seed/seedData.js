@@ -1,18 +1,30 @@
 const mongoose = require("mongoose");
 const connectDb = require("../database/mongo");
 const User = require("../models/UserModel");
+const Pass = require("../models/PasswordModel");
 
-const data = {
-  name: "admin",
-  email: "vardibile@tutanota.com",
+const user = {
+  username: "admin",
+  mail: "vardibile@tutanota.com",
   password: "Password1!",
   role: "admin",
+};
+
+const pass = {
+  title: "esxi",
+  catagory: "server",
+  ip: "Password1!",
+  fqdn: "esxi.syqpass.local",
+  type: "server",
+  username: "root",
+  password: "Password1!",
 };
 
 const seedData = async () => {
   connectDb();
   try {
-    await User.create(data);
+    //await User.create(user);
+    await Pass.create(pass);
     console.log("Create seed data");
   } catch (error) {
     console.log(error);
