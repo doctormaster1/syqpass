@@ -1,4 +1,4 @@
-import apiService from "../http";
+import apiService from "../utils/http";
 
 const getAll = () => {
   return apiService.get("/passwords");

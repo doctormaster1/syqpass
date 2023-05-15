@@ -7,6 +7,7 @@ const unknownEndpoint = require("./middlewares/unknownEndpoint");
 const errorHandler = require("./middlewares/errorHandler");
 
 const AuthRoute = require("./routers/AuthRoute");
+const PasswordRoute = require("./routers/PasswordRoute");
 
 const app = express();
 
@@ -28,6 +29,7 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.dnsPrefetchControl());
 
 app.use("/api", AuthRoute);
+app.use("/api", PasswordRoute);
 
 app.get("/", (req, res) => {
   res.sendStatus(200);

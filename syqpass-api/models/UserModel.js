@@ -3,25 +3,22 @@ const bcrypt = require("bcrypt");
 const genToken = require("../utils/genToken");
 
 const UserSchema = new mongoose.Schema({
-  name: {
+  username: {
     type: String,
-    required: [true, "Lütfen adınızı girin!"],
-    trim: true,
+    required: true,
   },
-  email: {
+  password: {
     type: String,
-    required: [true, "Lütfen email adresinizi girin!"],
+    required: true,
+  },
+  mail: {
+    type: String,
+    required: true,
     match: [
       /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
       "Geçersiz karakterler!!!",
     ],
     unique: true,
-  },
-  password: {
-    type: String,
-    minlength: [8, "Parolanız 8 karakterden fazla olmalı"],
-    required: [true, "Lütfen parola girin"],
-    select: false,
   },
   role: {
     type: String,
@@ -34,7 +31,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("remove", async function (next) {
-  await this.model("Auth").deleteMany({ uId: this._id });
+  await this.model("Auth").deleteMany({ userId: this._id });
   next();
 });
 
