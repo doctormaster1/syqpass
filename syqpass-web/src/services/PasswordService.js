@@ -1,11 +1,11 @@
 import apiService from "../utils/http";
 
 const getAll = () => {
-  return apiService.get("/passwords");
+  return apiService.get("/passwords").then(res => res).catch(err => err);
 };
 
 const get = (id) => {
-  return apiService.get(`/password/${id}`);
+  return apiService.get(`/password/${id}`).then(res => res).catch(err => err);
 };
 
 const create = (data) => {

@@ -6,7 +6,7 @@ import { retrievePassword } from "../../slices/PasswordSlice";
 const TableThree = () => {
   const [isHidden, setIsHidden] = useState(false);
 
-  const passwords = useSelector((state) => state.passwords);
+  const passwords = useSelector((state) => state.password);
   const dispatch = useDispatch();
 
   const initFetch = useCallback(() => {
@@ -50,12 +50,11 @@ const TableThree = () => {
                 Actions
               </th>
             </tr>
-            {console.log(passwords)}
           </thead>
           <tbody>
             {passwords &&
               passwords.map((password, index) => (
-                <tr itemID={index}>
+                <tr key={index} itemID={index}>
                   <td className="border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11">
                     <p className="text-black dark:text-white">
                       {password.title}
@@ -75,13 +74,13 @@ const TableThree = () => {
                     </p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                    <p>{isHidden.btn1 ? `${password.password}` : "********"}</p>
+                    <p>{isHidden[index] ? `${password.password}` : "********"}</p>
                   </td>
                   <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                     <div className="flex items-center space-x-3.5">
                       <button
                         className="hover:text-primary"
-                        onClick={() => toggleVisibility("btn1")}
+                        onClick={() => toggleVisibility(index)}
                       >
                         <svg
                           className="fill-current"

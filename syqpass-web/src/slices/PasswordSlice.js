@@ -44,7 +44,7 @@ const passwordSlice = createSlice({
         state.push(action.payload);
       })
       .addCase(retrievePassword.fulfilled, (state, action) => {
-        return action.payload;
+        return [...action.payload];
       })
       .addCase(updatePassword.fulfilled, (state, action) => {
         const index = state.findIndex(

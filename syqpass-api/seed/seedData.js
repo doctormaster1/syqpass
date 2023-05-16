@@ -11,13 +11,13 @@ const user = {
 };
 
 const pass = {
-  title: "esxi",
+  title: "idrac",
   catagory: "server",
-  ip: "Password1!",
-  fqdn: "esxi.syqpass.local",
+  ip: "192.168.1.3",
+  fqdn: "idrac.syqpass.local",
   type: "server",
   username: "root",
-  password: "Password1!",
+  password: "Password123!",
 };
 
 const seedData = async () => {
