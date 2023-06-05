@@ -23,7 +23,7 @@ const pass = {
 const seedData = async () => {
   connectDb();
   try {
-    //await User.create(user);
+    await User.create(user);
     await Pass.create(pass);
     console.log("Create seed data");
   } catch (error) {
