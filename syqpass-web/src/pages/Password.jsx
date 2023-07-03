@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import DefaultLayout from "../layout/DefaultLayout";
 import Breadcrumb from "../components/Breadcrumb";
 import ServerTable from "../components/Table/ServerTable";
+import AddPassword from "../components/Popup/AddPassword";
 
 function Password() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenDialog = () => {
+    setIsOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsOpen(false);
+  };
+
   return (
     <DefaultLayout>
       <Breadcrumb pageName="Passwords" />
@@ -11,7 +22,10 @@ function Password() {
         <div className="grid grid-cols-12">
           <div className="col-span-11"></div>
           <div>
-            <button className="inline-flex items-center justify-center bg-primary py-2 px-9 text-center font-medium text-white hover:bg-opacity-90 lg:px-7 xl:px-9">
+            <button
+              className="inline-flex items-center justify-center bg-primary py-2 px-9 text-center font-medium text-white hover:bg-opacity-90 lg:px-7 xl:px-9"
+              onClick={handleOpenDialog}
+            >
               <span>
                 <svg
                   width="16px"
@@ -29,6 +43,7 @@ function Password() {
               </span>
               Add
             </button>
+            {isOpen && <AddPassword onClose={handleCloseDialog}></AddPassword>}
           </div>
         </div>
       </div>

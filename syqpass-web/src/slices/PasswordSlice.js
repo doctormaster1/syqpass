@@ -6,6 +6,7 @@ const initialState = [];
 export const createPassword = createAsyncThunk(
   "password/create",
   async ({ data }) => {
+    console.log(data)
     const res = await Service.create(data);
     return res.data;
   }

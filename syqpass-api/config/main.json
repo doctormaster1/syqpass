@@ -1,6 +1,6 @@
 {
   "database": {
-    "mongo": "mongodb://localhost:5000/syqpass"
+    "mongo": "mongodb://127.0.0.1:27017/syqpass"
   },
   "jwt": {
     "secret": "vardibile",
