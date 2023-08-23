@@ -23,12 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
-# Custom
-/**/SeedData.js
+# # Custom
+# /**/SeedData.js
 
-# Keys
-/**/keys/*.pem
-/**/keys/*.crt
-/**/keys/*.ca
-/**/keys/*.cer
-/**/keys/*.der
+# # Keys
+# /**/keys/*.pem
+# /**/keys/*.crt
+# /**/keys/*.ca
+# /**/keys/*.cer
+# /**/keys/*.der
