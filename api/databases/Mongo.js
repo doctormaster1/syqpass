@@ -11,7 +11,7 @@ const connectMongoDb = async () => {
       useUnifiedTopology: true,
     })
     .then(() => {
-      AuditLogger.debug(LogResult(`MongoDB Connected`));
+      AuditLogger.debug(LogResult({ message: `MongoDB Connected` }));
     })
     .catch((err) => {
       DebugLogger.error(LogResult(err));
