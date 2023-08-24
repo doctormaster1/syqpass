@@ -9,6 +9,7 @@ const mongoDb = require("./databases/Mongo");
 
 const NotificationRouter = require("./routers/NotificationRouter");
 const UserRouter = require("./routers/UserRouter");
+const RoleRouter = require("./routers/RoleRouter");
 
 const main = async () => {
   const app = express();
@@ -30,6 +31,7 @@ const main = async () => {
 
   app.use("/api/notification", NotificationRouter);
   app.use("/api/user", UserRouter);
+  app.use("/api/role", RoleRouter);
 
   app.use(ErrorHandler);
 

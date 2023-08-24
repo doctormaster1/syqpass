@@ -3,6 +3,8 @@ const mongoose = require("mongoose");
 const ZoneSchema = new mongoose.Schema({
   Name: {
     type: String,
+    unique: true,
+    trim: true,
     required: true,
     minlength: 3,
     maxlength: 50,

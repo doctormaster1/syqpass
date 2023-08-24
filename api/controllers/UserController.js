@@ -5,7 +5,7 @@ const {
   ErrResult,
   LogResult,
 } = require("../helpers/Result");
-const { ApplicationLogger } = require("../utils/Logger");
+const { ApplicationLogger, DebugLogger } = require("../utils/Logger");
 const UserModel = require("../models/UserModel");
 const UserValidator = require("../validators/UserValidator");
 
@@ -20,7 +20,9 @@ const postUser = asyncHandler(async (req, res, next) => {
 
   const user = req.body.data;
   const validate = await UserValidator.validateAsync(user);
-  if (validate.error) return res.status(400).send(ErrResult(validate.error));
+  if (validate.error) {
+    return res.status(400).send(ErrResult(validate.error));
+  }
   await UserModel.create(user).catch((err) => {
     return res.status(500).send(ErrResult(err));
   });
@@ -72,18 +74,21 @@ const putUser = asyncHandler(async (req, res, next) => {
     })
   );
 
-  const user = await UserModel.find(req.params.id);
+  const user = await UserModel.findById(req.params.id);
   if (!user) {
     return res.status(404).send(MsgResult("User Not Found"));
   }
 
   const validate = await UserValidator.validateAsync(req.body.data);
-  if (validate.error) return res.status(400).send(ErrResult(validate.error));
+  if (validate.error) {
+    return res.status(400).send(ErrResult(validate.error));
+  }
 
   await UserModel.updateOne(req.params.id, req.body.data, {
     new: true,
     runValidators: true,
   }).catch((err) => {
+    DebugLogger.error(LogResult(err));
     return res.status(500).send(ErrResult(err));
   });
   res.status(201).send(MsgResult("Updated User"));

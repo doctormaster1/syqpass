@@ -5,7 +5,7 @@ const {
   ErrResult,
   LogResult,
 } = require("../helpers/Result");
-const { ApplicationLogger } = require("../utils/Logger");
+const { ApplicationLogger, DebugLogger } = require("../utils/Logger");
 const NotificationModel = require("../models/NotificationModel");
 const NotificationValidator = require("../validators/NotificationValidator");
 
@@ -21,8 +21,11 @@ const postNotification = asyncHandler(async (req, res, next) => {
   const notification = req.body.data;
   const validate = await NotificationValidator.validateAsync(notification);
 
-  if (validate.error) return res.status(400).send(ErrResult(validate.error));
+  if (validate.error) {
+    return res.status(400).send(ErrResult(validate.error));
+  }
   await NotificationModel.create(notification).catch((err) => {
+    DebugLogger.error(LogResult(err));
     return res.status(500).send(ErrResult(err));
   });
   res.status(200).send(MsgResult("Created Notification"));
