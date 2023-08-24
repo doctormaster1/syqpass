@@ -1,22 +1,18 @@
-const MsgRes = (msg) => {
+const MsgRes = (message) => {
   return {
-    message: msg,
+    message,
   };
 };
 
 const DataRes = (data) => {
   return {
-    data: {
-      ...data,
-    },
+    data,
   };
 };
 
-const ErrRes = (err) => {
+const ErrRes = (error) => {
   return {
-    error: {
-      ...err,
-    },
+    error,
   };
 };
 

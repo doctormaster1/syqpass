@@ -12,12 +12,11 @@ const NotificationSchema = new mongoose.Schema({
     required: true,
     maxlength: 200,
   },
-  DateTime: {
+  CreatedAt: {
     type: Date,
     default: Date.now,
   },
 });
 
 const Notification = mongoose.model("Notification", NotificationSchema);
-
 module.exports = Notification;
