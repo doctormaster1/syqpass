@@ -23,7 +23,6 @@ const ZoneSchema = new mongoose.Schema({
 ZoneSchema.pre("remove", async function (next) {
   await this.model("Device").deleteMany({ ZoneId: this._id });
   await this.model("Password").deleteMany({ ZoneId: this._id });
-  await this.model("Subnet").deleteMany({ ZoneId: this._id });
   next();
 });
 
