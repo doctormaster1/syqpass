@@ -29,7 +29,7 @@ const main = async () => {
 
   app.use(hpp({ whitelist: ["search"] }));
   app.use(helmet());
-  app.use(cors());
+  app.use(cors({ origin: "*" }));
 
   app.use("/", DashboardRouter);
 
