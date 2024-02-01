@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mongodb:
+  db:
     image: mongo:6
     container_name: syqpass-db
     restart: unless-stopped
@@ -28,7 +28,7 @@ services:
     networks:
       - syqpass_net
     depends_on:
-      - syqpass-api
+      - api
 
   api:
     build:
@@ -44,7 +44,7 @@ services:
     networks:
       - syqpass_net
     depends_on:
-      - syqpass-db
+      - db
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:4000/"]
       interval: 30s
