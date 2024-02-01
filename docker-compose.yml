@@ -21,7 +21,6 @@ services:
       context: ./client
       dockerfile: Dockerfile
     container_name: syqpass-web
-    restart: unless-stopped
     volumes:
       - /opt/syqpass/web:/app/dist
       - /opt/syqpass/
