@@ -14,4 +14,4 @@ COPY --from=dependencies /app/node_modules ./node_modules
 
 COPY . .
 
-CMD ["npm", "run build"]
+CMD npm run build
