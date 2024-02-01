@@ -1,5 +1,5 @@
 {
   "FQDN": "*",
   "PORT": 4000,
-  "MONGODB": "mongodb://127.0.0.1:6000/syqpass"
+  "MONGODB": "mongodb://localhost:6000/syqpass"
 }
