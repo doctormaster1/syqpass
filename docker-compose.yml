@@ -1,0 +1,56 @@
+version: '3'
+services:
+  mongodb:
+    image: mongo:6
+    container_name: syqpass-db
+    restart: unless-stopped
+    volumes:
+      - /opt/syqpass/data:/data/db
+    ports:
+      - "6000:27017"
+    networks:
+      - syqpass_net
+    healthcheck:
+      test: ["CMD", "mongo", "--eval", "printjson(db.adminCommand('ping'))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  web:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: syqpass-web
+    restart: unless-stopped
+    volumes:
+      - /opt/syqpass/web:/app/build
+      - /opt/syqpass/
+    networks:
+      - syqpass_net
+    depends_on:
+      - syqpass-api
+
+  api:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: syqpass-api
+    restart: unless-stopped
+    volumes:
+      - /opt/syqpass/config/api:/app/config
+      - /opt/syqpass/log:/var/log/syqpass
+    ports:
+      - "4000:4000"
+    networks:
+      - syqpass_net
+    depends_on:
+      - syqpass-db
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:4000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  syqpass_net:
+    driver: bridge

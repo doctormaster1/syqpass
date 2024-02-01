@@ -12,7 +12,6 @@ const ErrorHandler = require("./middlewares/ErrorHandler");
 const config = require("./config/main.json");
 const mongoDb = require("./databases/Mongo");
 
-const DashboardRouter = require("./routers/");
 const NotificationRouter = require("./routers/NotificationRouter");
 const UserRouter = require("./routers/UserRouter");
 const RoleRouter = require("./routers/RoleRouter");
@@ -29,9 +28,18 @@ const main = async () => {
 
   app.use(hpp({ whitelist: ["search"] }));
   app.use(helmet());
-  app.use(cors({ origin: "pass.syqpass.com" }));
+  app.use(cors({ origin: config.FQDN }));
 
-  app.use("/", DashboardRouter);
+  app.get("/", (req, res) => {
+    ApplicationLogger.info(
+      LogResult({
+        url: req.originalUrl,
+        method: req.method,
+        ip: req.ip,
+      })
+    );
+    res.status(200).send("Ok");
+  });
 
   app.get("/api", (req, res) => {
     ApplicationLogger.info(
