@@ -1,9 +1,10 @@
 version: '3'
 services:
-  db:
+  syqpass-db:
     image: mongo:6
     container_name: syqpass-db
     restart: unless-stopped
+    hostname: syqpass-db
     volumes:
       - /opt/syqpass/data:/data/db
     ports:
@@ -16,11 +17,12 @@ services:
       timeout: 10s
       retries: 3
 
-  web:
+  syqpass-web:
     build:
       context: ./client
       dockerfile: Dockerfile
     container_name: syqpass-web
+    hostname: syqpass-web
     volumes:
       - /opt/syqpass/web:/app/dist
       - /opt/syqpass/
@@ -29,12 +31,13 @@ services:
     depends_on:
       - api
 
-  api:
+  syqpass-api:
     build:
       context: ./server
       dockerfile: Dockerfile
     container_name: syqpass-api
     restart: unless-stopped
+    hostname: syqpass-api
     volumes:
       - /opt/syqpass/config/api:/app/config
       - /opt/syqpass/log:/var/log/syqpass
@@ -45,7 +48,7 @@ services:
     depends_on:
       - db
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:4000/"]
+      test: ["CMD", "curl", "-f", "http://syqpass-api:4000/"]
       interval: 30s
       timeout: 10s
       retries: 3
